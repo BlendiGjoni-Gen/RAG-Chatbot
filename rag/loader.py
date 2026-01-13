@@ -1,0 +1,44 @@
+from pathlib import Path
+from typing import List
+
+from langchain_core.document_loaders import Document, PyPDFLoader, UnstructuredMarkdownLoader
+
+def load_pdfs(directory: str) -> List[Document]:
+    documents = []
+    pdf_files = Path(directory).glob("*.pdf")
+
+    for pdf_path in pdf_files:
+        loader = PyPDFLoader(str(pdf_path))
+        pages = loader.load()
+
+        for page in pages:
+            page.metadata["source"] = pdf_path.name
+            documents.append(page)
+
+    return documents
+
+
+def load_markdown(directory: str) -> List[Document]:
+    documents = []
+    md_files = Path(directory).glob("*.md")
+
+    for md_path in md_files:
+        loader = UnstructuredMarkdownLoader(str(md_path))
+        docs = loader.load()
+
+        for doc in docs:
+            doc.metadata["source"] = md_path.name
+            documents.append(doc)
+
+    return documents
+
+
+def load_documents(directory: str) -> List[Document]:
+    if not Path(directory).exists():
+        raise FileNotFoundError(f"Directory not found: {directory}")
+
+    documents = []
+    documents.extend(load_pdfs(directory))
+    documents.extend(load_markdown(directory))
+
+    return documents
