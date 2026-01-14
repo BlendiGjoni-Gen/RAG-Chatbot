@@ -1,14 +1,18 @@
 from pathlib import Path
 from typing import List
 
-from langchain_core.document_loaders import Document, PyPDFLoader, UnstructuredMarkdownLoader
+from langchain_core.documents import Document
+from langchain_community.document_loaders import (
+    PyMuPDFLoader,
+    UnstructuredMarkdownLoader,
+)
 
 def load_pdfs(directory: str) -> List[Document]:
     documents = []
     pdf_files = Path(directory).glob("*.pdf")
 
     for pdf_path in pdf_files:
-        loader = PyPDFLoader(str(pdf_path))
+        loader = PyMuPDFLoader(str(pdf_path))
         pages = loader.load()
 
         for page in pages:
