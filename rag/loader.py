@@ -15,8 +15,9 @@ def load_pdfs(directory: str) -> List[Document]:
         loader = PyMuPDFLoader(str(pdf_path))
         pages = loader.load()
 
-        for page in pages:
+        for page_num, page in enumerate(pages):
             page.metadata["source"] = pdf_path.name
+            page.metadata["page"] = page_num + 1
             documents.append(page)
 
     return documents
