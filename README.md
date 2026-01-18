@@ -21,6 +21,7 @@ It can answer questions using a set of documents (PDFs and Markdown). The bot wi
 1. **Install dependencies:**
  
 pip install -r requirements.txt
+
 Add your HuggingFace API key to a .env file:
 
 HUGGINGFACE_API_KEY=your_api_key_here
