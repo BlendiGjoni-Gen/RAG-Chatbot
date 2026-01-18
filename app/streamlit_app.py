@@ -1,15 +1,16 @@
-import streamlit as st
-from rag.chain import rag_chain
-from rag.llm import get_llm
-from rag.retriever import get_retriever
-from rag.vectorstore import load_vectorstore
-from pathlib import Path
 import sys
 import os
 
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if ROOT_DIR not in sys.path:
     sys.path.insert(0, ROOT_DIR)
+
+import streamlit as st
+from rag.chain import rag_chain
+from rag.llm import get_llm
+from rag.retriever import get_retriever
+from rag.vectorstore import load_vectorstore
+from pathlib import Path
 
 st.set_page_config(page_title="RAG Chatbot", page_icon="🤖")
 
