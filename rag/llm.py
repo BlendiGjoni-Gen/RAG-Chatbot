@@ -7,7 +7,7 @@ def get_llm():
         temperature=0.1,
         max_new_tokens=512,
         provider="huggingface",
-        huggingfacehub_api_token=os.getenv("HUGGINGFACEHUB_API_TOKEN"),
+        huggingfacehub_api_token=os.getenv("HF_TOKEN"),
         stop_sequences=["DONE"]
     )
     return ChatHuggingFace(llm=llm)
