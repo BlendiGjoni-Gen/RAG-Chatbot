@@ -3,6 +3,8 @@ from typing import List
 from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
+
+#Functions to chunk the docs and clean them for later use
 def chunk_docs(documents: List[Document], chunk_size: int = 1000):
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=chunk_size,

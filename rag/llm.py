@@ -4,7 +4,8 @@ import streamlit as st
 
 def get_llm():
     # Attempt to get token from Streamlit secrets or Env vars
-    hf_token = st.secrets.get("HF_TOKEN") or os.getenv("HF_TOKEN")
+    hf_token = st.secrets["HF_TOKEN"]["token"]
+    os.environ["HUGGINGFACEHUB_API_TOKEN"] = hf_token
 
     if not hf_token:
         st.error("HF_TOKEN not found! Please set it in Streamlit Secrets.")

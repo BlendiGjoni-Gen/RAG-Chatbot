@@ -22,9 +22,7 @@ The bot will only answer using the documents in the vectorstore.
 """
 )
 
-# -----------------------------
 # Streamlit caching to speed up loading
-# -----------------------------
 @st.cache_resource
 def load_retriever_and_vectorstore(k: int = 4):
     BASE_DIR = Path(__file__).resolve().parent.parent
@@ -44,9 +42,7 @@ def load_llm_instance():
 
 llm = load_llm_instance()
 
-# -----------------------------
 # User input
-# -----------------------------
 question = st.text_input("Enter your question:")
 
 if st.button("Ask") and question.strip():

@@ -7,6 +7,7 @@ from langchain_community.document_loaders import (
     UnstructuredMarkdownLoader,
 )
 
+#Functions to load the docs (pdf, markdown, docs) and create metadata
 def load_pdfs(directory: str) -> List[Document]:
     documents = []
     pdf_files = Path(directory).glob("*.pdf")

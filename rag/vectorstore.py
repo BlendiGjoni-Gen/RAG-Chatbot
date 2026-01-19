@@ -8,6 +8,7 @@ from rag.embeddings import get_embedding_model
 
 VECTORSTORE_DIR = Path("data/vectorstore")
 
+#Create vector store and save it in folder data/vectorstore using FAISS
 def create_vectorstore(chunks: List[Document]) -> FAISS:
     embedding_model = get_embedding_model()
 
@@ -21,6 +22,7 @@ def create_vectorstore(chunks: List[Document]) -> FAISS:
 
     return vectorstore
 
+#Load the vector store
 def load_vectorstore() -> FAISS:
     embedding_model = get_embedding_model()
     if not VECTORSTORE_DIR.exists():
